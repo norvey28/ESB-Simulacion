@@ -1,0 +1,16 @@
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:leg="http://legacy.com/soap">
+
+   <soapenv:Header/>
+
+   <soapenv:Body>
+
+      <leg:procesarPagoRequest>
+         <leg:cliente>Juan</leg:cliente>
+         <leg:monto>150</leg:monto>
+      </leg:procesarPagoRequest>
+
+   </soapenv:Body>
+
+</soapenv:Envelope>

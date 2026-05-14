@@ -1,0 +1,31 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  esb:
+    build: ./esb
+    container_name: esb
+    ports:
+      - "8080:8080"
+
+  legacy-soap:
+    build: ./legacy-soap
+    dns:
+      - 8.8.8.8
+    container_name: legacy-soap
+    working_dir: /app
+    #command: tail -f /dev/null
+    ports:
+      - "8081:8080"
+
+  legacy-billing:
+    image: python:3.11
+    container_name: legacy-billing
+    working_dir: /app
+    volumes:
+      - ./legacy-billing:/app
+    command: tail -f /dev/null
