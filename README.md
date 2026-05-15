@@ -94,3 +94,37 @@ El archivo `request.xml` contiene un ejemplo de petición SOAP válida para el s
 - `legacy-soap` requiere que el archivo `pagos.xsd` esté en `src/main/resources/` para que Spring Boot lo cargue correctamente.
 - Si tienes problemas al construir con Maven dentro del contenedor, revisa la conectividad a internet y la configuración de proxy en Docker Desktop.
 - `gateway/` y `legacy-billing/` actualmente son carpetas de soporte, puedes usarlas para extender esta simulación con más servicios.
+
+## Configuración RabbitMQ mediante UI
+Para ingresar a RabbitMQ acceder a [http://localhost:15672/](http://localhost:15672/), ingresar con usuario: `guest` y contraseña:`guest`
+
+### 1. Crear Exchange
+
+1. Exchanges
+2. Add a new exchange
+    * Name : `pagos.exchange`
+    * Type : `direct`
+    * Durability : `Durable`
+
+    **_`Los otros campos se dejan por defecto`_**
+3. Add exchange
+
+
+### 2. Crear Queue
+
+1. Queues and Streams
+2. Add a new queue
+    * Name : `pagos.queue`
+    * Durability : `Durable`
+
+    **_`Los otros campos se dejan por defecto`_**
+3. Add queue
+
+### 3. Crear Binding
+
+1. Exchanges
+2. Entrar a pagos.exchange
+3. Bindings
+    * To queue : `pagos.queue`
+    * Routing key : `pagos.routing`
+4. Bind
