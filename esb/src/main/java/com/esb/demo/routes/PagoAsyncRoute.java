@@ -18,7 +18,7 @@ public class PagoAsyncRoute extends RouteBuilder {
 
             .to(
                 "spring-rabbitmq:pagos.exchange" +
-                "&queues=pagos.queue" +
+                "?queues=pagos.queue" +
                 "&routingKey=pagos.routing"
             )
 
